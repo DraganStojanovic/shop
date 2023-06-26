@@ -1,4 +1,5 @@
 @extends('master')
+@section('title', 'Shop Page')
 
     @section( 'content' )
         <div class="container pt-3">
