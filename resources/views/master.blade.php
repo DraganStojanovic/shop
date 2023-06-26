@@ -21,14 +21,14 @@
             <li class="nav-item {{ Request::path() ==  '/' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item {{ Request::path() ==  'about' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('/about') }}">About</a>
+            <li class="nav-item {{ Request::path() ==  'about-page' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('/about-page') }}">About</a>
             </li>
-            <li class="nav-item {{ Request::path() ==  'shop' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('/shop') }}">Shop</a>
+            <li class="nav-item {{ Request::path() ==  'shop-page' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('/shop-page') }}">Shop</a>
             </li>
-            <li class="nav-item {{ Request::path() ==  'contact' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
+            <li class="nav-item {{ Request::path() ==  'contact-page' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('/contact-page') }}">Contact</a>
             </li>
         </ul>
         {{--        <form class="form-inline my-2 my-lg-0">--}}
