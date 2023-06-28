@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="jumbotron">
                         <h3>Trenutno vreme je:</h3>
-                        <h4>{{ date("h:i:s") }}</h4>
+                        <h5>{{ date("h:i:s") }}</h5>
                     </div>
                 </div>
             </div>
