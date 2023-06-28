@@ -13,19 +13,19 @@
                     <form id="contactForm">
 
                         <!-- Name input -->
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-md-6 offset-md-3 p-3">
                             <label class="form-label" for="your-subject">Your Subject</label>
                             <input class="form-control" id="your-subject" name="subject" type="text" placeholder="Your Subject" />
                         </div>
 
                         <!-- Email address input -->
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-md-6 offset-md-3 p-3">
                             <label class="form-label" for="emailAddress">Email Address</label>
                             <input class="form-control" id="emailAddress" name="email" placeholder="Email Address" />
                         </div>
 
                         <!-- Message input -->
-                        <div class="col-md-6 offset-md-3">
+                        <div class="col-md-6 offset-md-3 p-3">
                             <label class="form-label" for="message">Message</label>
                             <textarea class="form-control" id="message" name="message" placeholder="Message" style="height: 10rem;"></textarea>
                         </div>
