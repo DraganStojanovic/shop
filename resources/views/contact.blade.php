@@ -1,5 +1,5 @@
 @extends('master')
-@section('title', 'Contact Page')
+{{--@section('title', 'Contact Page')--}}
 
     @section( 'content' )
         <div class="container pt-3">
