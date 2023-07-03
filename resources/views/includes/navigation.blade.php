@@ -7,16 +7,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::path() ==  '/' ? 'active' : '' }}" href="{{ url('/') }}">Home</a>
+                        <a class="nav-link {{ Request::path() ==  '/' ? 'active' : '' }}" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::path() ==  'about-page' ? 'active' : '' }}" href="{{ url('/about-page') }}">About</a>
+                        <a class="nav-link {{ Request::path() ==  'about' ? 'active' : '' }}" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::path() ==  'shop-page' ? 'active' : '' }}" href="{{ url('/shop-page') }}">Shop</a>
+                        <a class="nav-link {{ Request::path() ==  'shop' ? 'active' : '' }}" href="/shop">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::path() ==  'contact-page' ? 'active' : '' }}" href="{{ url('/contact-page') }}">Contact</a>
+                        <a class="nav-link {{ Request::path() ==  'contact' ? 'active' : '' }}" href="/contact">Contact</a>
                     </li>
 
                 </ul>
