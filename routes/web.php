@@ -24,13 +24,17 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/contact-page', function () {
 //    return view('contact', ['name' => 'Contact']);
 //});
+Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'index']);
+//Route::get('/', "HomeController@info");
 
-Route::view('/', "welcome");
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index']);
+//Route::get('/contact', "ContactController@index");
 
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index']);
+//Route::get('/about', "AboutController@index");
 
 Route::get('/shop',[\App\Http\Controllers\ProductController::class, 'index']);
+//Route::get('/shop','ShopController@index');
 
 
 
