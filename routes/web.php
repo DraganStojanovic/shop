@@ -26,8 +26,13 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::view('/', "welcome");
-Route::view('/about', "about");
-Route::view('/shop', "shop");
-Route::view('/contact', "contact");
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index']);
+
+Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index']);
+
+Route::get('/shop',[\App\Http\Controllers\ProductController::class, 'index']);
+
+
+
 
 
