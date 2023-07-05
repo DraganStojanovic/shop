@@ -17,10 +17,10 @@
                         <h5 class="card-text">Price: {{ $product->price }}</h5>
                     </div>
                     <div class="card-body">
-                        <a href="#" class="card-link">More</a>
-                        <a href="#" class="card-link">Compare</a>
+                        <a href="#" class="card-link text-white">More</a>
+                        <a href="#" class="card-link text-white">Compare</a>
                     </div>
-                </div>
+                </div><br>
             </div>
             @endforeach
         </div>

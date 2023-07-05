@@ -17,7 +17,7 @@ class ProductController extends Controller
 //        $products = DB::select("SELECT * from Product);
 
         return view('shop', [
-            "products" => $products
+            "products" => $products,
         ]);
     }
 
