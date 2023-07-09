@@ -35,8 +35,6 @@ Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index']);
 
 Route::get('/shop',[\App\Http\Controllers\ProductController::class, 'index']);
 //Route::get('/shop','ShopController@index');
-
-
 Route::get('/admin/all-contacts', [\App\Http\Controllers\ContactController::class, 'getAllContacts']);
 
 
