@@ -7,5 +7,4 @@
 /dataSources/
 /dataSources.local.xml
 # Exclude .idea folder
-/**/.idea/*
-.gitignore
+/.idea/
