@@ -1,2 +1,3 @@
 .idea/
+#add to exclude .env files
 .env
