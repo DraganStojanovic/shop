@@ -13,11 +13,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-//        $products = DB::select("SELECT * from Product);
+//        $products = Product::all();
+////        $products = DB::select("SELECT * from Product);
+//
+//        return view('shop', [
+//            "products" => $products,
+//        ]);
 
         return view('shop', [
-            "products" => $products,
+            "products" => Product::all(),
         ]);
     }
 

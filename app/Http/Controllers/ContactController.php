@@ -14,10 +14,15 @@ class ContactController extends Controller
 
     public function getAllContacts()
     {
-        $contacts = ContactModel::all();
+//        $contacts = ContactModel::all();
+//
+//        return view('all-contacts', [
+//            "contacts" => $contacts,
+//        ]);
 
         return view('all-contacts', [
-            "contacts" => $contacts,
+            "contacts" => ContactModel::all(),
         ]);
+
     }
 }

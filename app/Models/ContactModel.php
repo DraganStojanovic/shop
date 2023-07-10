@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContactModel extends Model
 {
-    protected $table = "contact";
-
-    protected $fillable = [
-        "email","subject","message"
-    ];
+    const TABLE = "contact";
+    protected $table = self::TABLE;
+//    protected $table = "contact";
+//
+//    protected $fillable = [
+//        "email","subject","message"
+//    ];
 }
