@@ -7,4 +7,5 @@
 /dataSources/
 /dataSources.local.xml
 # Exclude .idea folder
-
+.idea/
+.env
