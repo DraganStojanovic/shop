@@ -24,20 +24,22 @@
                 <div class="container py-4 pb-5">
 
                     <!-- Bootstrap 5 starter form -->
-                    <form id="contactForm">
+                    <form method="POST" action="/send-contact" id="contactForm" enctype="multipart/form-data">
+                        @if ( $errors->any())
+                            <p>Greska: {{ $errors->first() }}</p>
+                        @endif
 
-                        <!-- Name input -->
-                        <div class="col-md-6 offset-md-3 p-3">
-                            <label class="form-label" for="your-subject">Your Subject</label>
-                            <input class="form-control" id="your-subject" name="subject" type="text" placeholder="Your Subject" />
-                        </div>
-
+                            {{ csrf_field() }}
                         <!-- Email address input -->
                         <div class="col-md-6 offset-md-3 p-3">
                             <label class="form-label" for="emailAddress">Email Address</label>
                             <input class="form-control" id="emailAddress" name="email" placeholder="Email Address" />
                         </div>
-
+                        <!-- Name input -->
+                        <div class="col-md-6 offset-md-3 p-3">
+                            <label class="form-label" for="your-subject">Your Subject</label>
+                            <input class="form-control" id="your-subject" name="subject" type="text" placeholder="Your Subject" />
+                        </div>
                         <!-- Message input -->
                         <div class="col-md-6 offset-md-3 p-3">
                             <label class="form-label" for="message">Message</label>

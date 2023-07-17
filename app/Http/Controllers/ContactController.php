@@ -25,4 +25,19 @@ class ContactController extends Controller
         ]);
 
     }
+    public function sendContact(Request $request)
+    {
+        $request->validate([
+           'email'  => 'required|string',
+            'subject' => 'required|string|min:5',
+            'message' => 'required|string'
+    ]);
+        ContactModel::create([
+            'email' => $request->get('email'),
+            'subject' => $request->get('subject'),
+            'message' => $request->get('message'),
+        ]);
+
+        return redirect('/shop');
+    }
 }

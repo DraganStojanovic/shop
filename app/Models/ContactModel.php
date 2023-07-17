@@ -10,8 +10,8 @@ class ContactModel extends Model
     const TABLE = "contact";
     protected $table = self::TABLE;
 //    protected $table = "contact";
-//
-//    protected $fillable = [
-//        "email","subject","message"
-//    ];
+
+    protected $fillable = [
+        "email","subject","message"
+    ];
 }
