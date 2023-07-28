@@ -11,6 +11,7 @@
             <div class="col-sm-4">
                 <div class="card text-white bg-primary">
                     <div class="card-body">
+                        <img src="{{ asset('./storage/images/'.$product->image) }}" class="card-img-top" alt="Slike">
                         <h1 class="card-title">Product: {{ $product->name }}</h1>
                         <h3 class="card-text">Model: {{ $product->description }}</h3>
                         <h4 class="card-text">Amount: {{ $product->amount }}</h4>

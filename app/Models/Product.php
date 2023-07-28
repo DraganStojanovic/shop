@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $table = 'products';
+    use HasFactory;
+    const TABLE = "products";
+    protected $table = self::TABLE;
+//    protected $table = 'products';
 
     protected $fillable = [
         "name","description","amount","price","image"
     ];
+
 }
