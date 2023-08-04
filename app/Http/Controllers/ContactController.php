@@ -30,20 +30,20 @@ class ContactController extends Controller
     {
         $singleContact = Contact::where(['id' => $contact])->first();
 
-        if ($singleContact === null)
-        {
+        if ($singleContact === null) {
             die('Contact is not found!');
         }
         $singleContact->delete();
-         return redirect()->back();
+        return redirect()->back();
     }
+
     public function sendContact(Request $request)
     {
         $request->validate([
-           'email'  => 'required|string',
+            'email' => 'required|string',
             'subject' => 'required|string|min:5',
             'message' => 'required|string'
-    ]);
+        ]);
         Contact::create([
             'email' => $request->get('email'),
             'subject' => $request->get('subject'),

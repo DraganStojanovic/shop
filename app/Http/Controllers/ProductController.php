@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-
 class ProductController extends Controller
 {
     /**
@@ -28,22 +27,20 @@ class ProductController extends Controller
             'id' => $products
         ])->first();
 
-        if ($singleProduct === null)
-        {
+        if ($singleProduct === null) {
             die('Product is not found in the list of products list!');
         }
 
         $singleProduct->delete();
-
         return redirect()->back();
     }
 
     public function sendAdminProducts()
-{
-    return view('products', [
-        "products" => Product::all(),
-    ]);
-}
+    {
+        return view('products', [
+            "products" => Product::all(),
+        ]);
+    }
 
     public function getAllProducts()
     {
@@ -55,7 +52,7 @@ class ProductController extends Controller
     public function sendProduct(Request $request)
     {
         $request->validate([
-            'name'  => 'required|string|min:3|unique:products',
+            'name' => 'required|string|min:3|unique:products',
             'description' => 'required|string|min:5',
             'amount' => 'required|string',
             'price' => 'required|string',
@@ -77,7 +74,7 @@ class ProductController extends Controller
             'description' => $request->get('description'),
             'amount' => $request->get('amount'),
             'price' => $request->get('price'),
-            'image' =>  $image_name
+            'image' => $image_name
         ]);
 
         return redirect('/admin/products/');

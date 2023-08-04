@@ -6,7 +6,6 @@
     <div class="container pt-5">
         <h1>Admin Products List</h1>
         <div class="d-flex p-2 bd-highlight mb-3">
-{{--            <a href="{{ route('/admin/all-product') }}" class="btn btn-dark">Add</a>--}}
         </div>
         <table class="table">
             <thead>
@@ -29,13 +28,9 @@
                     <td>{{ $product->amount }}</td>
                     <td>{{ $product->price }}</td>
                     <td>
-
                         @if( $product->image)
-{{--                            <img src="{{ $product->image }}" style="height: 50px;width:100px;" alt="slika">--}}
-
-                                <img src="/storage/images/{{ $product->image }}" style="height:50px; width:100px;" alt="slika">
-
-{{--                            {{ asset('storage/app/public/images'. $product->image) }}--}}
+                            <img src="/storage/images/{{ $product->image }}" style="height:50px; width:100px;"
+                                 alt="slika">
                         @else
                             <span>No image found!</span>
                         @endif
@@ -49,5 +44,4 @@
             </tbody>
         </table>
     </div>
-
 @stop
