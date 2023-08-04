@@ -25,6 +25,18 @@ class ContactController extends Controller
         ]);
 
     }
+
+    public function delete($contact)
+    {
+        $singleContact = Contact::where(['id' => $contact])->first();
+
+        if ($singleContact === null)
+        {
+            die('Contact is not found!');
+        }
+        $singleContact->delete();
+         return redirect()->back();
+    }
     public function sendContact(Request $request)
     {
         $request->validate([

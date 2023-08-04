@@ -3,7 +3,7 @@
 
 @section( 'content' )
 
-    <div class="container">
+    <div class="container pt-5">
         <h1>Admin Products List</h1>
         <div class="d-flex p-2 bd-highlight mb-3">
 {{--            <a href="{{ route('/admin/all-product') }}" class="btn btn-dark">Add</a>--}}
@@ -11,12 +11,13 @@
         <table class="table">
             <thead>
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Amount</th>
                 <th>Price</th>
                 <th width="30%">Image</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -32,12 +33,16 @@
                         @if( $product->image)
 {{--                            <img src="{{ $product->image }}" style="height: 50px;width:100px;" alt="slika">--}}
 
-                                <img src="/storage/images/{{$product->image}}" style="height:50px; width:100px;" alt="slika">
+                                <img src="/storage/images/{{ $product->image }}" style="height:50px; width:100px;" alt="slika">
 
 {{--                            {{ asset('storage/app/public/images'. $product->image) }}--}}
                         @else
                             <span>No image found!</span>
                         @endif
+                    </td>
+                    <td>
+                        <a href="/admin/delete-product/{{ $product->id }}" class="btn btn-danger">Delete</a>
+                        <a class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             @endforeach

@@ -1,4 +1,10 @@
 <!-- Footer -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <footer class="page-footer font-small bg-light fixed-bottom">
 
     <!-- Copyright -->

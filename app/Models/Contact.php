@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    const TABLE = "contact";
+    const TABLE = "contacts";
     protected $table = self::TABLE;
 //    protected $table = "contact";
 

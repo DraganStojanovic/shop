@@ -4,7 +4,7 @@
     @section( 'content' )
 
 <div class="card">
-    <h1 class="text-center pt-3 pb-3">Products</h1>
+    <h1 class="text-center pt-5 pb-5">Products</h1>
     <div class="card-body">
         <div class="row">
             @foreach($products as $product)
@@ -22,6 +22,9 @@
                         <a href="#" class="card-link text-white">Compare</a>
                     </div>
                 </div><br>
+{{--                <div class="d-flex">--}}
+{{--                    {!! $product->links() !!}--}}
+{{--                </div>--}}
             </div>
             @endforeach
         </div>
