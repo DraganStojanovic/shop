@@ -25,8 +25,8 @@
                     <td>{{ $contact->subject }}</td>
                     <td>{{ $contact->message }}</td>
                     <td>
-                        <a href="/admin/delete-contact/{{ $contact->id }}" class="btn btn-danger">Delete</a>
-                        <a class="btn btn-primary">Edit</a>
+                        <a href="{{ route('obrisiContact', ['contact'=> $contact->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('contact.single', ['id'=> $contact->id]) }}" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             @endforeach

@@ -52,4 +52,32 @@ class ContactController extends Controller
 
         return redirect('/shop');
     }
+
+    public function singleContact(Request $request, $id)
+    {
+        $contact = Contact::where('id', $id)->first();
+        if($contact === NULL)
+        {
+            die('Contact is not found');
+        }
+        return view("edit-contact", compact('contact'));
+
+    }
+
+    public function save(Request $request, $id)
+    {
+        $contact = Contact::where(['id'=> $id])->first();
+        if($contact === NULL)
+        {
+            die('Contact is not found');
+        }
+
+        $contact->email = $request->get('email');
+        $contact->subject = $request->get('subject');
+        $contact->message = $request->get('message');
+        $contact->save();
+
+        return redirect()->back();
+}
+
 }

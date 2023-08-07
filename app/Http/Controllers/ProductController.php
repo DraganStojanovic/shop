@@ -80,6 +80,34 @@ class ProductController extends Controller
         return redirect('/admin/products/');
     }
 
+    public function singleProduct(Request $request, $id)
+    {
+        $product = Product::where('id', $id)->first();
+        if($product === NULL)
+        {
+            die('Product is not found');
+        }
+        return view("edit-product", compact('product'));
+    }
+
+    public function save(Request $request, $id)
+    {
+        $product = Product::where(['id' => $id])->first();
+
+        if($product === NULL)
+        {
+            die('Product is not found');
+        }
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->amount = $request->get('amount');
+        $product->price = $request->get('price');
+        $product->save();
+
+        return redirect()->back();
+
+
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -1,10 +1,10 @@
 @extends('master')
-@section('title', 'Home page')
+@section('title', 'Dashboard page')
 
     @section( 'content' )
         <div class="container pt-3">
                 <div class="row">
-                    <h1>Home page</h1>
+                    <h1>Dashboard page</h1>
                 </div>
                 <div class="row">
                     <div class="bg-light p-5 rounded-lg m-3">
