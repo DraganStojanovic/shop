@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdminCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/shop', [ProductController::class, 'index']);
 
-Route::middleware('auth')->prefix('admin')->group(function(){
+Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function(){
     Route::get('/all-contacts', [ContactController::class, 'getAllContacts']);
     Route::post('/send-contact', [ContactController::class, 'sendContact']);
     Route::get('/delete-contact/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');

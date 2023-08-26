@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminCheckMiddleware
@@ -15,6 +16,14 @@ class AdminCheckMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        $role = Auth::user()->role; // role od usera koji je ulogovan
+
+        if($role != 'admin') // ako nisi admin
+        {
+            return redirect("/"); // vrati ga nba home page
+        }
+
+        return $next($request); // nastavi dalje
+
     }
 }
