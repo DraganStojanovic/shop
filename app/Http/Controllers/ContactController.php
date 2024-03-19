@@ -50,7 +50,7 @@ class ContactController extends Controller
             'message' => $request->get('message'),
         ]);
 
-        return redirect('/shop');
+        return redirect('/all-contacts');
     }
 
     public function singleContact(Request $request, $id)

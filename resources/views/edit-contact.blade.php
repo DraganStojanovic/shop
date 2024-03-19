@@ -35,13 +35,13 @@
 
                 <!-- Email address input -->
                 <div class="col-md-6 offset-md-3 p-3">
-                    <label class="form-label" for="emailAddress">Email Address</label>
-                    <input class="form-control" id="emailAddress" name="email" placeholder="Email Address" value="{{ $contact->email }}"/>
+                    <label class="form-label" for="email">Email Address</label>
+                    <input class="form-control" id="email" name="email" placeholder="Email Address" value="{{ $contact->email }}"/>
                 </div>
                 <!-- Name input -->
                 <div class="col-md-6 offset-md-3 p-3">
-                    <label class="form-label" for="your-subject">Your Subject</label>
-                    <input class="form-control" id="your-subject" name="subject" type="text"
+                    <label class="form-label" for="subject">Your Subject</label>
+                    <input class="form-control" id="subject" name="subject" type="text"
                            placeholder="Your Subject" value="{{ $contact->subject }}"/>
                 </div>
                 <!-- Message input -->

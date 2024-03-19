@@ -18,14 +18,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($contacts as $key=>$contact)
+            @foreach( $contacts as $key=>$contact)
                 <tr>
                     <td>{{ ++$key }}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->subject }}</td>
                     <td>{{ $contact->message }}</td>
                     <td>
-                        <a href="{{ route('obrisiContact', ['contact'=> $contact->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('obrisiContact', ['contact'=> $contact->id]) }}" class="btn btn-danger mb-1">Delete</a>
                         <a href="{{ route('contact.single', ['id'=> $contact->id]) }}" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
