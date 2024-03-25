@@ -18,7 +18,6 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Request::path() ==  'contact' ? 'active' : '' }}" href="/contact">Contact</a>
                     </li>
-
                 </ul>
             </div>
         </div>

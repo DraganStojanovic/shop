@@ -14,8 +14,8 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae justo molestie, maximus risus
                     eu, pretium ligula. .</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn btn-primary btn-lg px-4" href="{{ url('/shop-page') }}" role="button">Get back to
-                        Shop</a>
+                    <a class="btn btn-primary btn-lg px-4" href="{{ route('/all-contacts') }}" role="button">Get back to
+                        All Contacts</a>
                     <a class="btn btn-info btn-lg px-4" href="{{ url('/about-page') }}" role="button">About Us</a>
                 </div>
             </div>

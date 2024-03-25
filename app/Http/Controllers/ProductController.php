@@ -62,7 +62,7 @@ class ProductController extends Controller
 
         $image = $request->file('image');
         $image_name = $image->hashName();
-        $image->storeAs("/public/images/", "$image_name");
+        $image->storeAs("/storage/images/", "$image_name");
 
         // php artisan storage:link -> pravi symlink na "storage/app/public"
         // Mi kada upload sliku stavljamo je u "storage/app/public/images"
@@ -90,14 +90,47 @@ class ProductController extends Controller
         return view("edit-product", compact('product'));
     }
 
+//    public function save(Request $request, $id)
+//    {
+//        $product = Product::where(['id' => $id])->first();
+//
+//        if($product === NULL)
+//        {
+//            die('Product is not found');
+//        }
+//        $product->name = $request->get('name');
+//        $product->description = $request->get('description');
+//        $product->amount = $request->get('amount');
+//        $product->price = $request->get('price');
+//        $product->save();
+//
+//        return redirect()->back();
+//
+//
+//    }
     public function save(Request $request, $id)
     {
-        $product = Product::where(['id' => $id])->first();
+        $product = Product::findOrFail($id);
 
-        if($product === NULL)
-        {
-            die('Product is not found');
+        // Proverite da li je slika poslata s formom
+        if ($request->hasFile('image')) {
+            // Dobijte instancu fajla
+            $image = $request->file('image');
+
+            // Generiše ime slike
+            $imageName = $image->hashName();
+
+            // Postavite putanju gde će se slika sačuvati
+            $imagePath = public_path('/storage/images/');
+
+            // Pomerite sliku na odgovarajuću lokaciju
+            $image->move($imagePath, $imageName);
+
+            // Ažurirajte polje slike u bazi podataka
+            $product->image = $imageName;
         }
+
+        // Ažurirajte ostala polja
         $product->name = $request->get('name');
         $product->description = $request->get('description');
         $product->amount = $request->get('amount');
@@ -105,9 +138,8 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->back();
-
-
     }
+
     /**
      * Show the form for creating a new resource.
      */

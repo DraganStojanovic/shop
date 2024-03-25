@@ -28,7 +28,7 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/shop', [ProductController::class, 'index']);
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function(){
-    Route::get('/all-contacts', [ContactController::class, 'getAllContacts']);
+    Route::get('/all-contacts', [ContactController::class, 'getAllContacts'])->name('all-contacts');
     Route::post('/send-contact', [ContactController::class, 'sendContact'])->name('send-contact');
     Route::get('/delete-contact/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
     Route::get('/edit-contact/edit/{id}', [ContactController::class, 'singleContact'])->name('contact.single');
@@ -52,6 +52,7 @@ Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
