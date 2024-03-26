@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="bg-light p-5 rounded-lg m-3">
                         <h3 class="display-4">Trenutno vreme je:</h3>
-                        <h5 class="display-2">{{ date("h:i:s") }}</h5>
+                        <h5 class="display-2">{{ gmdate("H:i:s", time() - 3600) }}</h5>
                     </div>
                 </div>
             </div>
