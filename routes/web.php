@@ -35,9 +35,9 @@ Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group
     Route::post('/edit-contact/save/{id}', [ContactController::class, 'save'])->name('contact.save');
 
 
-    Route::get('/all-product', [ProductController::class, 'getAllProducts']);
-    Route::post('/send-product', [ProductController::class, 'sendProduct']);
-    Route::get('/products', [ProductController::class, 'sendAdminProducts']);
+    Route::get('/add-product', [ProductController::class, 'getAllProducts']);
+    Route::post('/send-product', [ProductController::class, 'sendProduct'])->name('sendProduct');
+    Route::get('/all-products', [ProductController::class, 'sendAdminProducts']);
     Route::get('/delete-product/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
     /**
      * Editovanje ili izmena single product-a !

@@ -37,16 +37,25 @@ class ProductController extends Controller
 
     public function sendAdminProducts()
     {
-        return view('products', [
-            "products" => Product::all(),
+//        return view('products', [
+//            "products" => Product::all(),
+//        ]);
+        $products = Product::orderBy('created_at', 'desc')->get();
+        return view('all-products', [
+            "products" => $products,
         ]);
     }
 
     public function getAllProducts()
     {
-        return view('all-product', [
+        return view('add-product', [
             "products" => Product::all(),
         ]);
+    }
+
+    private function generateImageHash($image)
+    {
+        return md5($image->getClientOriginalName());
     }
 
     public function sendProduct(Request $request)
@@ -57,18 +66,14 @@ class ProductController extends Controller
             'amount' => 'required|string',
             'price' => 'required|string',
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
-
         ]);
 
         $image = $request->file('image');
-        $image_name = $image->hashName();
-        $image->storeAs("/storage/images/", "$image_name");
+        $image_name = $this->generateImageHash($image);
 
-        // php artisan storage:link -> pravi symlink na "storage/app/public"
-        // Mi kada upload sliku stavljamo je u "storage/app/public/images"
-        // Posle mi mozemo da pristupimo njoj pomocu symlinka iz "/public/storage/images"
-        // Naravno kada ti ucitavas sliku u HTML ti ne stavljas "/public/storage/images" vec samo "/storage/images" jer "/" mu je public
-        // Enjoy :)
+        // Čuvanje slike u direktorijumu storage/app/public/images
+        $image->storeAs('public/images', $image_name);
+
         Product::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
@@ -90,24 +95,7 @@ class ProductController extends Controller
         return view("edit-product", compact('product'));
     }
 
-//    public function save(Request $request, $id)
-//    {
-//        $product = Product::where(['id' => $id])->first();
 //
-//        if($product === NULL)
-//        {
-//            die('Product is not found');
-//        }
-//        $product->name = $request->get('name');
-//        $product->description = $request->get('description');
-//        $product->amount = $request->get('amount');
-//        $product->price = $request->get('price');
-//        $product->save();
-//
-//        return redirect()->back();
-//
-//
-//    }
     public function save(Request $request, $id)
     {
         $product = Product::findOrFail($id);
@@ -117,17 +105,17 @@ class ProductController extends Controller
             // Dobijte instancu fajla
             $image = $request->file('image');
 
-            // Generiše ime slike
-            $imageName = $image->hashName();
+            // Generišite hash od originalnog imena slike
+            $imageNameHash = $this->generateImageHash($image);
 
-            // Postavite putanju gde će se slika sačuvati
-            $imagePath = public_path('/storage/images/');
+            // Postavite putanju gde će se nova slika sačuvati
+            $imagePath = public_path('storage/images');
 
-            // Pomerite sliku na odgovarajuću lokaciju
-            $image->move($imagePath, $imageName);
+            // Pomerite novu sliku na odgovarajuću lokaciju pod jedinstvenim imenom
+            $image->move($imagePath, $imageNameHash);
 
-            // Ažurirajte polje slike u bazi podataka
-            $product->image = $imageName;
+            // Ažurirajte polje slike u bazi podataka sa novim hash-om
+            $product->image = $imageNameHash;
         }
 
         // Ažurirajte ostala polja
@@ -137,55 +125,6 @@ class ProductController extends Controller
         $product->price = $request->get('price');
         $product->save();
 
-        return redirect()->back();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
-    {
-        //
+        return redirect('/admin/products/');
     }
 }

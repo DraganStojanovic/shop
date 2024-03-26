@@ -6,6 +6,9 @@
     <div class="container pt-5">
         <h1>Admin Products List</h1>
         <div class="d-flex p-2 bd-highlight mb-3">
+            <div class="col-md-6 offset-md-3 d-grid">
+                <a href="/admin/all-product" class="btn btn-info">Add New Product</a>
+            </div>
         </div>
         <table class="table">
             <thead>
@@ -29,7 +32,7 @@
                     <td>{{ $product->price }}</td>
                     <td>
                         @if( $product->image)
-                            <img src="/storage/images/{{ $product->image }}" style="height:50px; width:100px;"
+                            <img src="{{ asset('storage/images/' . $product->image) }}" style="height:50px; width:100px;"
                                  alt="slika">
                         @else
                             <span>No image found!</span>
