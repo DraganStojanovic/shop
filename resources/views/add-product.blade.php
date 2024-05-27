@@ -22,9 +22,13 @@
 
         <!-- Wrapper container -->
         <div class="container py-4 pb-5">
-
+            <div class="d-flex p-2 bd-highlight mb-3">
+                <div class="col-md-6 offset-md-3 d-grid">
+                    <a href="/admin/all-products" class="btn btn-info">Watch All Products</a>
+                </div>
+            </div>
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="{{ route('sendProduct') }}" id="contactForm" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('saveProduct') }}" id="contactForm" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div>
                     @if ( $errors->any())

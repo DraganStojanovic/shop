@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveProductRequest;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -65,15 +66,8 @@ class ProductController extends Controller
         return md5($image->getClientOriginalName());
     }
 
-    public function sendProduct(Request $request)
+    public function saveProduct(SaveProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|min:3|unique:products',
-            'description' => 'required|string|min:5',
-            'amount' => 'required|string',
-            'price' => 'required|string',
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
-        ]);
 
         $image = $request->file('image');
         $image_name = $this->generateImageHash($image);

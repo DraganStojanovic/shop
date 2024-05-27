@@ -36,7 +36,7 @@ Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group
 
 
     Route::get('/add-product', [ProductController::class, 'getAllProducts']);
-    Route::post('/send-product', [ProductController::class, 'sendProduct'])->name('sendProduct');
+    Route::post('/save-product', [ProductController::class, 'saveProduct'])->name('saveProduct');
     Route::get('/all-products', [ProductController::class, 'sendAdminProducts']);
     Route::get('/delete-product/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
     /**
