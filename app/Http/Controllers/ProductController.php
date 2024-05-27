@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +13,14 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    private $productRepo;
+
+    public function __construct()
+    {
+        $this->productRepo = new ProductRepository();
+    }
+
+
     public function index()
     {
 //        $products = DB::table('products')->paginate(3);
@@ -74,15 +83,13 @@ class ProductController extends Controller
         // Čuvanje slike u direktorijumu storage/app/public/images
         $image->storeAs('public/images', $image_name);
 
-        Product::create([
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'amount' => $request->get('amount'),
-            'price' => $request->get('price'),
-            'image' => $image_name
-        ]);
+        // Dodajte image_name u request podatke pre nego što ih prosledite
+        $request->merge(['image_name' => $image_name]);
 
-        return redirect('/admin/products/');
+        // Prosljeđivanje request-a koji sada sadrži i image_name
+        $this->productRepo->createNew($request);
+
+        return redirect('/admin/all-products/');
     }
 
     public function singleProduct(Request $request, $id)
@@ -127,4 +134,6 @@ class ProductController extends Controller
 
         return redirect('/admin/products/');
     }
+
+
 }
