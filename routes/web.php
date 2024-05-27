@@ -34,25 +34,14 @@ Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group
     Route::get('/edit-contact/edit/{id}', [ContactController::class, 'singleContact'])->name('contact.single');
     Route::post('/edit-contact/save/{id}', [ContactController::class, 'save'])->name('contact.save');
 
-
     Route::get('/add-product', [ProductController::class, 'getAllProducts']);
     Route::post('/save-product', [ProductController::class, 'saveProduct'])->name('saveProduct');
     Route::get('/all-products', [ProductController::class, 'sendAdminProducts']);
     Route::get('/delete-product/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
-    /**
-     * Editovanje ili izmena single product-a !
-     */
+
     Route::get('/edit-product/edit/{id}', [ProductController::class, 'singleProduct'])->name('product.single');
-    /**
-     * Updagte izmene product-a u bazu !!!
-     */
-    Route::post('/edit-product/save/{id}', [ProductController::class, 'save'])->name('product.save');
+    Route::put('/edit-product/save/{id}', [ProductController::class, 'save'])->name('product.save');
 });
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

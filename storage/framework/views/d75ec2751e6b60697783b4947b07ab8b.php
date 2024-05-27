@@ -24,8 +24,8 @@
 
             <!-- Bootstrap 5 starter form -->
             <form method="POST" action="<?php echo e(route('product.save', ['id' => $product->id ])); ?>" id="contactForm" enctype="multipart/form-data">
-                <?php echo e(csrf_field()); ?>
-
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('PUT'); ?>
                 <div>
                     <?php if( $errors->any()): ?>
                         <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

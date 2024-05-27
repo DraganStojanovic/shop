@@ -25,7 +25,8 @@
 
             <!-- Bootstrap 5 starter form -->
             <form method="POST" action="{{ route('product.save', ['id' => $product->id ]) }}" id="contactForm" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
+                @method('PUT')
                 <div>
                     @if ( $errors->any())
                         @foreach ( $errors->all() as $error )
