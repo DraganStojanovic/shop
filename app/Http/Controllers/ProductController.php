@@ -32,9 +32,7 @@ class ProductController extends Controller
 
     public function delete($products)
     {
-        $singleProduct = Product::where([
-            'id' => $products
-        ])->first();
+        $singleProduct = $this->productRepo->getRepositoryById($products);
 
         if ($singleProduct === null) {
             die('Product is not found in the list of products list!');
@@ -126,13 +124,9 @@ class ProductController extends Controller
         }
 
         // Ažurirajte ostala polja
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
-        $product->amount = $request->get('amount');
-        $product->price = $request->get('price');
-        $product->save();
+        $this->productRepo->editProduct($product, $request);
 
-        return redirect('/admin/products/');
+        return redirect('/admin/all-products/');
     }
 
 
