@@ -105,31 +105,4 @@ class ProductController extends Controller
 
         return redirect('/admin/product/all');
     }
-
-//    public function save(EditProductRequest $request, $id)
-//    {
-//        $product = Product::findOrFail($id);
-//
-//        // Proverite da li je slika poslata s formom
-//        if ($request->hasFile('image')) {
-//            // Dobijte instancu fajla
-//            $image = $request->file('image');
-//
-//            // Generišite hash od originalnog imena slike
-//            $imageNameHash = $this->generateImageHash($image);
-//
-//            // Postavite putanju gde će se nova slika sačuvati
-//            $imagePath = public_path('storage/images');
-//
-//            // Pomerite novu sliku na odgovarajuću lokaciju pod jedinstvenim imenom
-//            $image->move($imagePath, $imageNameHash);
-//
-//            // Ažurirajte polje slike u bazi podataka sa novim hash-om
-//            $product->image = $imageNameHash;
-//        }
-//
-//        $this->productRepo->editProduct($product, $request);
-//
-//        return redirect('/admin/all-products/');
-//    }
 }

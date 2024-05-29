@@ -12,7 +12,7 @@
                 <p class="lead mb-4">
                     Edit contact details.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn btn-primary btn-lg px-4" href="<?php echo e(route('all-contacts')); ?>" role="button">Get back to
+                    <a class="btn btn-primary btn-lg px-4" href="<?php echo e(route('contact.all-contacts')); ?>" role="button">Get back to
                         All Contacts</a>
                     <a class="btn btn-info btn-lg px-4" href="<?php echo e(url('/about-page')); ?>" role="button">About Us</a>
                 </div>

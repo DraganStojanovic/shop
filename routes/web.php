@@ -27,22 +27,26 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/shop', [ProductController::class, 'index']);
 
-Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->name('product.')->group(function(){
-    Route::get('/contact/all', [ContactController::class, 'getAllContacts'])->name('all-contacts');
-    Route::post('/contact/send', [ContactController::class, 'sendContact'])->name('send-contact');
-    Route::get('/contact/delete/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
-    Route::get('/contact/edit/edit/{id}', [ContactController::class, 'singleContact'])->name('contact.single');
-    Route::post('/contact/edit/save/{id}', [ContactController::class, 'save'])->name('contact.save');
+Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () {
 
-    Route::get('/product/add', [ProductController::class, 'getAllProducts'])->name('addProduct');
-    Route::post('/product/product', [ProductController::class, 'saveProduct'])->name('saveProduct');
-    Route::get('/product/all', [ProductController::class, 'sendAdminProducts'])->name('allProducts');
-    Route::delete('/product/delete/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
+    Route::prefix('contact')->name('contact.')->group(function () {
+        Route::get('/all', [ContactController::class, 'getAllContacts'])->name('all-contacts');
+        Route::post('/send', [ContactController::class, 'sendContact'])->name('send-contact');
+        Route::get('/delete/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
+        Route::get('/edit/edit/{id}', [ContactController::class, 'singleContact'])->name('single');
+        Route::post('/edit/save/{id}', [ContactController::class, 'save'])->name('save');
+    });
 
-
-    Route::get('/product/edit/edit/{id}', [ProductController::class, 'singleProduct'])->name('single');
-    Route::put('/product/edit/save/{id}', [ProductController::class, 'save'])->name('save');
+    Route::prefix('product')->name('product.')->group(function () {
+        Route::get('/add', [ProductController::class, 'getAllProducts'])->name('addProduct');
+        Route::post('/product', [ProductController::class, 'saveProduct'])->name('saveProduct');
+        Route::get('/all', [ProductController::class, 'sendAdminProducts'])->name('allProducts');
+        Route::delete('/delete/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
+        Route::get('/edit/edit/{id}', [ProductController::class, 'singleProduct'])->name('single');
+        Route::put('/edit/save/{id}', [ProductController::class, 'save'])->name('save');
+    });
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -6,7 +6,7 @@
         <h1>Admin Products List</h1>
         <div class="d-flex p-2 bd-highlight mb-3">
             <div class="col-md-6 offset-md-3 d-grid">
-                <a href="{{ route('addProduct') }}" class="btn btn-info">Add New Product</a>
+                <a href="{{ route('product.addProduct') }}" class="btn btn-info">Add New Product</a>
             </div>
         </div>
         <table class="table">

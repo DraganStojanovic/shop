@@ -23,11 +23,11 @@
         <div class="container py-4 pb-5">
             <div class="d-flex p-2 bd-highlight mb-3">
                 <div class="col-md-6 offset-md-3 d-grid">
-                    <a href="<?php echo e(route('allProducts')); ?>" class="btn btn-info">Watch All Products</a>
+                    <a href="<?php echo e(route('product.allProducts')); ?>" class="btn btn-info">Watch All Products</a>
                 </div>
             </div>
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="<?php echo e(route('saveProduct')); ?>" id="contactForm" enctype="multipart/form-data">
+            <form method="POST" action="<?php echo e(route('product.saveProduct')); ?>" id="contactForm" enctype="multipart/form-data">
                 <?php echo e(csrf_field()); ?>
 
                 <div>

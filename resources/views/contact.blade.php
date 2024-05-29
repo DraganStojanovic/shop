@@ -22,7 +22,7 @@
         <!-- Wrapper container -->
         <div class="container py-4 pb-5">
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="{{ route('send-contact') }}" id="contactForm" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('contact.send-contact') }}" id="contactForm" enctype="multipart/form-data">
                 @csrf
 
                 @if ($errors->any())

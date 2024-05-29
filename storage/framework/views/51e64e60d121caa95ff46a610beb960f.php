@@ -44,7 +44,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkaži</button>
-                                <a href="<?php echo e(route('obrisiContact', ['contact' => $contact->id])); ?>" class="btn btn-danger">Obriši</a>
+                                <a href="<?php echo e(route('contact.obrisiContact', ['contact' => $contact->id])); ?>" class="btn btn-danger">Obriši</a>
                             </div>
                         </div>
                     </div>

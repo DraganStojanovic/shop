@@ -9,9 +9,7 @@
             <h1 class="display-5 fw-bold text-body-emphasis">Contact us</h1>
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae justo molestie, maximus risus
-                    eu, pretium ligula. Donec at magna et nisi viverra lobortis id eget nisl. Pellentesque sed eros et
-                    odio egestas auctor.</p>
+                    Please contact us through the form we've provided to make it easier for you to reach us, and we'll respond to you as soon as possible.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <a class="btn btn-primary btn-lg px-4" href="<?php echo e(url('/shop')); ?>" role="button">Get back to
                         Shop</a>
@@ -23,7 +21,7 @@
         <!-- Wrapper container -->
         <div class="container py-4 pb-5">
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="<?php echo e(route('send-contact')); ?>" id="contactForm" enctype="multipart/form-data">
+            <form method="POST" action="<?php echo e(route('contact.send-contact')); ?>" id="contactForm" enctype="multipart/form-data">
                 <?php echo csrf_field(); ?>
 
                 <?php if($errors->any()): ?>

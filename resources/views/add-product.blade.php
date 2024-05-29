@@ -24,11 +24,11 @@
         <div class="container py-4 pb-5">
             <div class="d-flex p-2 bd-highlight mb-3">
                 <div class="col-md-6 offset-md-3 d-grid">
-                    <a href="{{ route('allProducts') }}" class="btn btn-info">Watch All Products</a>
+                    <a href="{{ route('product.allProducts') }}" class="btn btn-info">Watch All Products</a>
                 </div>
             </div>
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="{{ route('saveProduct') }}" id="contactForm" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('product.saveProduct') }}" id="contactForm" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div>
                     @if ( $errors->any())

@@ -37,7 +37,7 @@ class ContactController extends Controller
     public function sendContact(SendContactRequest $request)
     {
         $this->contactRepo->createNew($request);
-        return redirect()->route('all-contacts');
+        return redirect()->route('contact.all-contacts');
     }
 
     public function singleContact($id)
@@ -55,6 +55,6 @@ class ContactController extends Controller
         $contact->message = $request->input('message');
         $contact->save();
 
-        return redirect()->route('all-contacts');
+        return redirect()->route('contact.all-contacts');
     }
 }

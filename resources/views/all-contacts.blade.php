@@ -45,7 +45,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkaži</button>
-                                <a href="{{ route('obrisiContact', ['contact' => $contact->id]) }}" class="btn btn-danger">Obriši</a>
+                                <a href="{{ route('contact.obrisiContact', ['contact' => $contact->id]) }}" class="btn btn-danger">Obriši</a>
                             </div>
                         </div>
                     </div>
