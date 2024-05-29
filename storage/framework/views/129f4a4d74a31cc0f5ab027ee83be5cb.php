@@ -1,7 +1,6 @@
-@extends('master')
-@section('title', 'Contact')
+<?php $__env->startSection('title', 'Contact'); ?>
 
-@section( 'content' )
+<?php $__env->startSection( 'content' ); ?>
     <div class="container pt-3">
         <div class="row text-center">
             <h1>Contact Page</h1>
@@ -10,11 +9,13 @@
             <h1 class="display-5 fw-bold text-body-emphasis">Contact us</h1>
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">
-                    Please contact us through the form we've provided to make it easier for you to reach us, and we'll respond to you as soon as possible.</p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae justo molestie, maximus risus
+                    eu, pretium ligula. Donec at magna et nisi viverra lobortis id eget nisl. Pellentesque sed eros et
+                    odio egestas auctor.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn btn-primary btn-lg px-4" href="{{ url('/shop') }}" role="button">Get back to
+                    <a class="btn btn-primary btn-lg px-4" href="<?php echo e(url('/shop')); ?>" role="button">Get back to
                         Shop</a>
-                    <a class="btn btn-info btn-lg px-4" href="{{ url('/about-page') }}" role="button">About Us</a>
+                    <a class="btn btn-info btn-lg px-4" href="<?php echo e(url('/about-page')); ?>" role="button">About Us</a>
                 </div>
             </div>
         </div>
@@ -22,18 +23,18 @@
         <!-- Wrapper container -->
         <div class="container py-4 pb-5">
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="{{ route('send-contact') }}" id="contactForm" enctype="multipart/form-data">
-                @csrf
+            <form method="POST" action="<?php echo e(route('send-contact')); ?>" id="contactForm" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>
 
-                @if ($errors->any())
+                <?php if($errors->any()): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
-                @endif
+                <?php endif; ?>
 
                 <!-- Email address input -->
                 <div class="col-md-6 offset-md-3 p-3">
@@ -65,4 +66,6 @@
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\shop\resources\views/contact.blade.php ENDPATH**/ ?>

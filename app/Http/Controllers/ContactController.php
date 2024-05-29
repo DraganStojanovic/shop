@@ -15,59 +15,46 @@ class ContactController extends Controller
     {
         $this->contactRepo = new ContactRepository();
     }
-public function index()
+
+    public function index()
     {
         return view('contact');
     }
 
     public function getAllContacts()
     {
-
         return view('all-contacts', [
             "contacts" => Contact::all(),
         ]);
-
     }
 
     public function delete(Contact $contact)
     {
-        $singleContact->delete();
-
+        $contact->delete();
         return redirect()->back();
     }
 
     public function sendContact(SendContactRequest $request)
     {
         $this->contactRepo->createNew($request);
-
-        return redirect('/all-contacts');
+        return redirect()->route('all-contacts');
     }
 
-    public function singleContact(Request $request, $id)
+    public function singleContact($id)
     {
-        $contact = Contact::where('id', $id)->first();
-        if($contact === NULL)
-        {
-            die('Contact is not found');
-        }
+        $contact = Contact::findOrFail($id);
         return view("edit-contact", compact('contact'));
-
     }
 
     public function save(Request $request, $id)
     {
-        $contact = Contact::where(['id'=> $id])->first();
-        if($contact === NULL)
-        {
-            die('Contact is not found');
-        }
+        $contact = Contact::findOrFail($id);
 
-        $contact->email = $request->get('email');
-        $contact->subject = $request->get('subject');
-        $contact->message = $request->get('message');
+        $contact->email = $request->input('email');
+        $contact->subject = $request->input('subject');
+        $contact->message = $request->input('message');
         $contact->save();
 
-        return redirect()->back();
-}
-
+        return redirect()->route('all-contacts');
+    }
 }

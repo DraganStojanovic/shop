@@ -1,21 +1,20 @@
-@extends('master')
-@section('title', 'Edit Product')
+<?php $__env->startSection('title', 'Edit Product'); ?>
 
-@section( 'content' )
+<?php $__env->startSection( 'content' ); ?>
     <div class="container pt-3">
         <div class="row text-center">
             <h1>EDIT Contact Page</h1>
         </div>
         <div class="px-4 py-5 my-5 text-center">
-            {{--                <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">--}}
+            
             <h1 class="display-5 fw-bold text-body-emphasis">Edit contact details</h1>
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">
                     Edit contact details.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn btn-primary btn-lg px-4" href="{{ route('all-contacts') }}" role="button">Get back to
+                    <a class="btn btn-primary btn-lg px-4" href="<?php echo e(route('all-contacts')); ?>" role="button">Get back to
                         All Contacts</a>
-                    <a class="btn btn-info btn-lg px-4" href="{{ url('/about-page') }}" role="button">About Us</a>
+                    <a class="btn btn-info btn-lg px-4" href="<?php echo e(url('/about-page')); ?>" role="button">About Us</a>
                 </div>
             </div>
         </div>
@@ -25,29 +24,30 @@
         <div class="container py-4 pb-5">
 
             <!-- Bootstrap 5 starter form -->
-            <form method="POST" action="{{ route('contact.save', ['id'=> $contact->id]) }}" id="contactForm" enctype="multipart/form-data">
-                @if ( $errors->any())
-                    <p>Greska: {{ $errors->first() }}</p>
-                @endif
+            <form method="POST" action="<?php echo e(route('contact.save', ['id'=> $contact->id])); ?>" id="contactForm" enctype="multipart/form-data">
+                <?php if( $errors->any()): ?>
+                    <p>Greska: <?php echo e($errors->first()); ?></p>
+                <?php endif; ?>
 
-                {{ csrf_field() }}
+                <?php echo e(csrf_field()); ?>
+
 
                 <!-- Email address input -->
                 <div class="col-md-6 offset-md-3 p-3">
                     <label class="form-label" for="email">Email Address</label>
-                    <input class="form-control" id="email" name="email" placeholder="Email Address" value="{{ $contact->email }}"/>
+                    <input class="form-control" id="email" name="email" placeholder="Email Address" value="<?php echo e($contact->email); ?>"/>
                 </div>
                 <!-- Name input -->
                 <div class="col-md-6 offset-md-3 p-3">
                     <label class="form-label" for="subject">Your Subject</label>
                     <input class="form-control" id="subject" name="subject" type="text"
-                           placeholder="Your Subject" value="{{ $contact->subject }}"/>
+                           placeholder="Your Subject" value="<?php echo e($contact->subject); ?>"/>
                 </div>
                 <!-- Message input -->
                 <div class="col-md-6 offset-md-3 p-3">
                     <label class="form-label" for="message">Message</label>
                     <textarea class="form-control" id="message" name="message" placeholder="Message"
-                              style="height: 10rem;">{{ $contact->message }}</textarea>
+                              style="height: 10rem;"><?php echo e($contact->message); ?></textarea>
                 </div>
 
                 <!-- Form submit button -->
@@ -69,4 +69,6 @@
         </div>
 
     </div>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\shop\resources\views/edit-contact.blade.php ENDPATH**/ ?>
