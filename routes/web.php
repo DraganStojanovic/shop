@@ -27,7 +27,7 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/shop', [ProductController::class, 'index']);
 
-Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function(){
+Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->name('product.')->namegroup(function(){
     Route::get('/contact/all', [ContactController::class, 'getAllContacts'])->name('all-contacts');
     Route::post('/contact/send', [ContactController::class, 'sendContact'])->name('send-contact');
     Route::get('/contact/delete/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
@@ -40,8 +40,8 @@ Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group
     Route::delete('/product/delete/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
 
 
-    Route::get('/product/edit/edit/{id}', [ProductController::class, 'singleProduct'])->name('product.single');
-    Route::put('/product/edit/save/{id}', [ProductController::class, 'save'])->name('product.save');
+    Route::get('/product/edit/edit/{id}', [ProductController::class, 'singleProduct'])->name('single');
+    Route::put('/product/edit/save/{id}', [ProductController::class, 'save'])->name('save');
 });
 
 Route::get('/dashboard', function () {
