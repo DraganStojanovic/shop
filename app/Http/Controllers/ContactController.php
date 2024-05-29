@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SendContactRequest;
 use App\Models\Contact;
+use App\Repositories\ContactRepository;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -21,11 +22,6 @@ public function index()
 
     public function getAllContacts()
     {
-//        $contacts = Contact::all();
-//
-//        return view('all-contacts', [
-//            "contacts" => $contacts,
-//        ]);
 
         return view('all-contacts', [
             "contacts" => Contact::all(),

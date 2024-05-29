@@ -5,7 +5,7 @@
         <h1>Admin Products List</h1>
         <div class="d-flex p-2 bd-highlight mb-3">
             <div class="col-md-6 offset-md-3 d-grid">
-                <a href="/admin/add-product" class="btn btn-info">Add New Product</a>
+                <a href="<?php echo e(route('addProduct')); ?>" class="btn btn-info">Add New Product</a>
             </div>
         </div>
         <table class="table">
@@ -36,7 +36,7 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="<?php echo e(route('obrisiProizvod', ['product' => $product->id])); ?>" class="btn btn-danger">Delete</a>
+                        <button class="btn btn-danger delete-button" data-id="<?php echo e($product->id); ?>" data-toggle="modal" data-target="#deleteModal">Delete</button>
                     </td>
                     <td>
                         <a href="<?php echo e(route('product.single', ['id' => $product->id])); ?>" class="btn btn-primary">Edit</a>
@@ -52,15 +52,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Potvrdi brisanje</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Da li ste sigurni da želite da obrišete ovaj proizvod?
+                    Are you sure you want to delete this product?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Otkaži</button>
-                    <button type="button" class="btn btn-danger" id="confirmDelete">Obriši</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form id="deleteForm" method="POST" style="display: inline;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -69,19 +73,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-            let confirmDeleteBtn = document.getElementById('confirmDelete');
-            let deleteFormAction;
+            let deleteForm = document.getElementById('deleteForm');
 
-            document.querySelectorAll('.btn-danger').forEach(btn => {
-                btn.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    deleteFormAction = this.getAttribute('href');
+            document.querySelectorAll('.delete-button').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    let productId = this.getAttribute('data-id');
+                    deleteForm.setAttribute('action', '/admin/product/delete/' + productId);
                     deleteModal.show();
                 });
-            });
-
-            confirmDeleteBtn.addEventListener('click', function () {
-                window.location.href = deleteFormAction;
             });
         });
     </script>

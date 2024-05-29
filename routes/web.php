@@ -28,19 +28,20 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/shop', [ProductController::class, 'index']);
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function(){
-    Route::get('/all-contacts', [ContactController::class, 'getAllContacts'])->name('all-contacts');
-    Route::post('/send-contact', [ContactController::class, 'sendContact'])->name('send-contact');
-    Route::get('/delete-contact/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
-    Route::get('/edit-contact/edit/{id}', [ContactController::class, 'singleContact'])->name('contact.single');
-    Route::post('/edit-contact/save/{id}', [ContactController::class, 'save'])->name('contact.save');
+    Route::get('/contact/all', [ContactController::class, 'getAllContacts'])->name('all-contacts');
+    Route::post('/contact/send', [ContactController::class, 'sendContact'])->name('send-contact');
+    Route::get('/contact/delete/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
+    Route::get('/contact/edit/edit/{id}', [ContactController::class, 'singleContact'])->name('contact.single');
+    Route::post('/contact/edit/save/{id}', [ContactController::class, 'save'])->name('contact.save');
 
-    Route::get('/add-product', [ProductController::class, 'getAllProducts']);
-    Route::post('/save-product', [ProductController::class, 'saveProduct'])->name('saveProduct');
-    Route::get('/all-products', [ProductController::class, 'sendAdminProducts']);
-    Route::get('/delete-product/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
+    Route::get('/product/add', [ProductController::class, 'getAllProducts'])->name('addProduct');
+    Route::post('/product/product', [ProductController::class, 'saveProduct'])->name('saveProduct');
+    Route::get('/product/all', [ProductController::class, 'sendAdminProducts'])->name('allProducts');
+    Route::delete('/product/delete/{product}', [ProductController::class, 'delete'])->name('obrisiProizvod');
 
-    Route::get('/edit-product/edit/{id}', [ProductController::class, 'singleProduct'])->name('product.single');
-    Route::put('/edit-product/save/{id}', [ProductController::class, 'save'])->name('product.save');
+
+    Route::get('/product/edit/edit/{id}', [ProductController::class, 'singleProduct'])->name('product.single');
+    Route::put('/product/edit/save/{id}', [ProductController::class, 'save'])->name('product.save');
 });
 
 Route::get('/dashboard', function () {

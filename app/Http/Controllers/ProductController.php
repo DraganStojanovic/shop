@@ -23,18 +23,18 @@ class ProductController extends Controller
             "products" => Product::all(),
         ]);
     }
-
     public function delete(Product $product)
     {
         $singleProduct = $this->productRepo->getRepositoryById($product->id);
 
         if ($singleProduct === null) {
-            die('Product is not found in the list of products list!');
+            return redirect()->back()->withErrors('Product is not found in the list of products!');
         }
 
         $singleProduct->delete();
         return redirect()->back();
     }
+
 
     public function sendAdminProducts()
     {
@@ -70,7 +70,7 @@ class ProductController extends Controller
         // Prosljeđivanje request-a koji sada sadrži i image_name
         $this->productRepo->createNew($request);
 
-        return redirect('/admin/all-products/');
+        return redirect('/admin/product/all');
     }
 
     public function singleProduct($id)
@@ -103,7 +103,7 @@ class ProductController extends Controller
 
         $this->productRepo->editProduct($product, $request);
 
-        return redirect('/admin/all-products/');
+        return redirect('/admin/product/all');
     }
 
 //    public function save(EditProductRequest $request, $id)

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Contact;
 
-class CantactRepository
+class ContactRepository
 {
     // DI - Dependency Injection
 
