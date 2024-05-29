@@ -27,7 +27,7 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/shop', [ProductController::class, 'index']);
 
-Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->name('product.')->namegroup(function(){
+Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->name('product.')->group(function(){
     Route::get('/contact/all', [ContactController::class, 'getAllContacts'])->name('all-contacts');
     Route::post('/contact/send', [ContactController::class, 'sendContact'])->name('send-contact');
     Route::get('/contact/delete/{contact}', [ContactController::class, 'delete'])->name('obrisiContact');
