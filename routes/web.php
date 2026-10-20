@@ -26,6 +26,7 @@ Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/shop', [ProductController::class, 'index']);
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () {
 

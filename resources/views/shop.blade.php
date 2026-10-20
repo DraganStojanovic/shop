@@ -18,7 +18,7 @@
                         <h5 class="card-text">Price: {{ $product->price }}</h5>
                     </div>
                     <div class="card-body">
-                        <a href="#" class="card-link text-white">More</a>
+                        <a href="{{ route('product.show', $product->id) }}" class="card-link text-white">More</a>
                         <a href="#" class="card-link text-white">Compare</a>
                     </div>
                 </div><br>

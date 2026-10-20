@@ -105,4 +105,8 @@ class ProductController extends Controller
 
         return redirect('/admin/product/all');
     }
+    public function show($id){
+        $product = Product::findOrFail($id);
+        return view('product-details', compact('product'));
+    }
 }
